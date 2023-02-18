@@ -1,0 +1,92 @@
+{
+  "name": "@karmaniverous/npm-package-template",
+  "bin": {
+    "mycli": "bin/mycli/index.js"
+  },
+  "version": "0.5.9",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karmaniverous/npm-package-template"
+  },
+  "author": "Jason G. Williscroft",
+  "bugs": {
+    "url": "https://github.com/karmaniverous/npm-package-template/issues"
+  },
+  "description": "An ES6 NPM package project template featuring a CLI, test support, automated API docs, release management & more!",
+  "homepage": "https://github.com/karmaniverous/npm-package-template#readme",
+  "keywords": [
+    "chai",
+    "docs",
+    "es6",
+    "javascript",
+    "npm",
+    "mocha",
+    "package",
+    "release",
+    "testing",
+    "template"
+  ],
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "commander": "^9.4.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "@karmaniverous/get-dotenv": "^0.1.0",
+    "@types/node": "^18.11.18",
+    "babel-plugin-lodash": "^3.3.4",
+    "chai": "^4.3.7",
+    "concat-md": "^0.5.0",
+    "eslint": "^8.30.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-jsdoc": "^39.7.4",
+    "eslint-plugin-mocha": "^10.1.0",
+    "jsdoc-to-markdown": "^8.0.0",
+    "mocha": "^10.2.0",
+    "prettier": "^2.8.1",
+    "release-it": "^15.6.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./dist/default/lib/index.js"
+    }
+  },
+  "main": "./lib/index.js",
+  "mocha": {
+    "exclude": [
+      "./dist/**",
+      "./node_modules/**"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "spec": "./**/*.test.!(*.*)"
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": true
+    }
+  },
+  "scripts": {
+    "lint": "eslint lib/** bin/**",
+    "test": "mocha",
+    "build": "babel lib -d dist/default/lib --delete-dir-on-start --config-file ./dist/default/.babelrc",
+    "doc": "jsdoc2md -c doc/jsdoc.config.json -f lib/**/*.* -t doc/api-template.hbs > doc/3-api.jsdoc2.md && concat-md doc --hide-anchor-links > README.md",
+    "package": "npm run lint && npm run test && npm run build && npm run doc",
+    "release": "npm run package && getdotenv -- release-it"
+  },
+  "type": "module"
+}
