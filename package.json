@@ -1,39 +1,28 @@
 {
-  "name": "@karmaniverous/npm-package-template",
-  "bin": {
-    "mycli": "bin/mycli/index.js"
-  },
-  "version": "0.5.9",
+  "name": "@karmaniverous/tagged-templates",
+  "version": "0.0.0",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/karmaniverous/npm-package-template"
+    "url": "https://github.com/karmaniverous/tagged-templates"
   },
   "author": "Jason G. Williscroft",
   "bugs": {
-    "url": "https://github.com/karmaniverous/npm-package-template/issues"
+    "url": "https://github.com/karmaniverous/tagged-templates/issues"
   },
-  "description": "An ES6 NPM package project template featuring a CLI, test support, automated API docs, release management & more!",
-  "homepage": "https://github.com/karmaniverous/npm-package-template#readme",
+  "description": "Here are some handy tagged template functions to make your ES6 template literals work better!",
+  "homepage": "https://github.com/karmaniverous/tagged-templates#readme",
   "keywords": [
-    "chai",
-    "docs",
     "es6",
     "javascript",
-    "npm",
-    "mocha",
-    "package",
-    "release",
-    "testing",
-    "template"
+    "string",
+    "tagged-template",
+    "template-literals"
   ],
   "license": "BSD-3-Clause",
-  "dependencies": {
-    "commander": "^9.4.1",
-    "lodash": "^4.17.21"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.7",
@@ -81,10 +70,10 @@
     }
   },
   "scripts": {
-    "lint": "eslint lib/** bin/**",
+    "lint": "eslint lib/**",
     "test": "mocha",
     "build": "babel lib -d dist/default/lib --delete-dir-on-start --config-file ./dist/default/.babelrc",
-    "doc": "jsdoc2md -c doc/jsdoc.config.json -f lib/**/*.* -t doc/api-template.hbs > doc/3-api.jsdoc2.md && concat-md doc --hide-anchor-links > README.md",
+    "doc": "jsdoc2md -c doc/jsdoc.config.json -f lib/**/*.* -t doc/api-template.hbs > doc/2-api.jsdoc2.md && concat-md doc --hide-anchor-links > README.md",
     "package": "npm run lint && npm run test && npm run build && npm run doc",
     "release": "npm run package && getdotenv -- release-it"
   },

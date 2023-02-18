@@ -1,79 +1,95 @@
-# NPM Package Template
+# tagged-templates
 
-You wrote a sweet piece of code! Releasing it on [NPM](https://www.npmjs.com/)
-seems like the obvious next step. Right?
+Here are some handy [tagged template](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates) functions to make your ES6 [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) work better!
 
-_Try it!_ Not as easy to do as you might think. At high quality. From scratch.
+## Installation
 
-So here's a plug-and-play NPM package template that offers the following
-features:
+```bash
+npm install @karmaniverous/tagged-templates
+```
 
-- Tree-shakable support for the latest ES6 goodies with
-  [`eslint`](https://www.npmjs.com/package/eslint) _uber alles_.
+## Usage
 
-- CJS distributions targeting specific browser support scenarios.
+```js
+import { def, n2e, sn2e, sn2u } from '@karmaniverous/tagged-templates';
 
-- Command line interfaces for your widget with
-  [`commander`](https://www.npmjs.com/package/commander).
+// Replicate default template literal functionality. Just FYI!
+console.log(def`a${'b'}c`); // 'abc'
+console.log(def`a${undefined}c`); // 'aundefinedc'
 
-- Automated [`lodash`](https://www.npmjs.com/package/lodash) cherry-picking with
-  [`babel-plugin-lodash`](https://www.npmjs.com/package/babel-plugin-lodash).
+// Replace any nil expression (i.e. null or undefined) with an empty string.
+console.log(n2e`a${undefined}c`); // 'ac'
 
-- [`mocha`](https://www.npmjs.com/package/mocha) &
-  [`chai`](https://www.npmjs.com/package/chai) for testing, with examples, and a
-  sweet testing console.
+// Return an empty string if any expression is nil.
+console.log(sn2u`a${undefined}c`); // ''
 
-- In-code access to
-  [`package.json`](https://github.com/karmaniverous/npm-package-template/blob/main/package.json)
-  data, with no warnings to ignore.
-
-- Code formatting at every save & paste with
-  [`prettier`](https://www.npmjs.com/package/prettier).
-
-- Automated documentation of your API with
-  [`jsdoc-to-markdown`](https://www.npmjs.com/package/jsdoc-to-markdown) and
-  assembly of your README with
-  [`concat-md`](https://www.npmjs.com/package/concat-md).
-
-- One-button release to GitHub & publish to NPM with
-  [`release-it`](https://www.npmjs.com/package/release-it).
-
-**[Click here](https://karmanivero.us/blog/npm-package-template/) for full
-documentation & instructions!**
-
-_If you want to create a React component in an NPM package, use my
-[React Component NPM Package Template](https://github.com/karmaniverous/react-component-npm-package-template)
-instead!_
-
-# Command Line Interface
-
-```text
-Usage: mycli [options]
-
-Foos your bar.
-
-Options:
-  -b, --bar <string>  foo what?
-  -h, --help          display help for command
+// Return undefined if any expression is nil.
+console.log(sn2u`a${undefined}c`); // undefined
 ```
 
 # API Documentation
 
-```js
-import { foo, PACKAGE_INFO } from '@karmaniverous/npm-package-template`;
-```
+<a name="module_taggedTemplates"></a>
 
-<a name="foo"></a>
+## taggedTemplates
 
-## foo(value) ⇒ <code>any</code>
-Returns whatever value is passed.
+* [taggedTemplates](#module_taggedTemplates)
+    * [.def](#module_taggedTemplates.def) ⇒ <code>string</code>
+    * [.n2e](#module_taggedTemplates.n2e) ⇒ <code>string</code>
+    * [.sn2e](#module_taggedTemplates.sn2e) ⇒ <code>string</code>
+    * [.sn2u](#module_taggedTemplates.sn2u) ⇒ <code>string</code>
 
-**Kind**: global function  
-**Returns**: <code>any</code> - Whatever value it was passed.  
+<a name="module_taggedTemplates.def"></a>
+
+### taggedTemplates.def ⇒ <code>string</code>
+Replicates standard string template behavior.
+
+**Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
+**Returns**: <code>string</code> - The output string.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>any</code> | Any value. |
+| strings | <code>Array.&lt;string&gt;</code> | The string literals. |
+| ...exp | <code>any</code> | The expressions. |
+
+<a name="module_taggedTemplates.n2e"></a>
+
+### taggedTemplates.n2e ⇒ <code>string</code>
+Nil to Empty: replaces nil expressions with empty strings.
+
+**Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
+**Returns**: <code>string</code> - The output string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| strings | <code>Array.&lt;string&gt;</code> | The string literals. |
+| ...exp | <code>any</code> | The expressions. |
+
+<a name="module_taggedTemplates.sn2e"></a>
+
+### taggedTemplates.sn2e ⇒ <code>string</code>
+Some Nil to Empty: returns empty string when any expression nil.
+
+**Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
+**Returns**: <code>string</code> - The output string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| strings | <code>Array.&lt;string&gt;</code> | The string literals. |
+| ...exp | <code>any</code> | The expressions. |
+
+<a name="module_taggedTemplates.sn2u"></a>
+
+### taggedTemplates.sn2u ⇒ <code>string</code>
+Some Nil to Undefined: returns undefined when any expression nil.
+
+**Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
+**Returns**: <code>string</code> - The output string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| strings | <code>Array.&lt;string&gt;</code> | The string literals. |
+| ...exp | <code>any</code> | The expressions. |
 
 
 ---
