@@ -21,7 +21,7 @@ console.log(def`a${undefined}c`); // 'aundefinedc'
 console.log(n2e`a${undefined}c`); // 'ac'
 
 // Return an empty string if any expression is nil.
-console.log(sn2u`a${undefined}c`); // ''
+console.log(sn2e`a${undefined}c`); // ''
 
 // Return undefined if any expression is nil.
 console.log(sn2u`a${undefined}c`); // undefined
