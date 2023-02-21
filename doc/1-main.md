@@ -23,6 +23,9 @@ console.log(n2e`a${undefined}c`); // 'ac'
 // Return an empty string if any expression is nil.
 console.log(sn2e`a${undefined}c`); // ''
 
+// Return null if any expression is nil.
+console.log(sn2n`a${undefined}c`); // null
+
 // Return undefined if any expression is nil.
 console.log(sn2u`a${undefined}c`); // undefined
 ```
