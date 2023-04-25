@@ -37,11 +37,24 @@ console.log(sn2u`a${undefined}c`); // undefined
 ## taggedTemplates
 
 * [taggedTemplates](#module_taggedTemplates)
+    * [.normstr](#module_taggedTemplates.normstr) ⇒ <code>string</code>
     * [.def](#module_taggedTemplates.def) ⇒ <code>string</code>
     * [.n2e](#module_taggedTemplates.n2e) ⇒ <code>string</code>
     * [.sn2e](#module_taggedTemplates.sn2e) ⇒ <code>string</code>
     * [.sn2n](#module_taggedTemplates.sn2n) ⇒ <code>string</code>
     * [.sn2u](#module_taggedTemplates.sn2u) ⇒ <code>string</code>
+
+<a name="module_taggedTemplates.normstr"></a>
+
+### taggedTemplates.normstr ⇒ <code>string</code>
+Normalize a string by converting diacriticals to base characters, removing non-word characters, and converting to lower case.
+
+**Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
+**Returns**: <code>string</code> - The normalized string.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| str | <code>string</code> | The string to normalize. |
 
 <a name="module_taggedTemplates.def"></a>
 
