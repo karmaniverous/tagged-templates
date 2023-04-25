@@ -50,7 +50,7 @@ console.log(sn2u`a${undefined}c`); // undefined
 Normalize a string by converting diacriticals to base characters, removing non-word characters, and converting to lower case.
 
 **Kind**: static constant of [<code>taggedTemplates</code>](#module_taggedTemplates)  
-**Returns**: <code>string</code> - The normalized string.  
+**Returns**: <code>string</code> - The normalized string or undefined if not a string.  
 
 | Param | Type | Description |
 | --- | --- | --- |
